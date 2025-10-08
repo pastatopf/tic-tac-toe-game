@@ -146,21 +146,29 @@ class TicTacToe {
 }
 
 // Spiel initialisieren, wenn die Seite geladen ist
-document.addEventListener('DOMContentLoaded', () => {
-    new TicTacToe();
-});
+// Wenn im Browser, initialisieren
+if (typeof window !== 'undefined') {
+    document.addEventListener('DOMContentLoaded', () => {
+        new TicTacToe();
+    });
 
-// Tastatur-Unterstützung hinzufügen
-document.addEventListener('keydown', (event) => {
-    if (event.key >= '1' && event.key <= '9') {
-        const index = parseInt(event.key) - 1;
-        const cell = document.querySelector(`[data-index="${index}"]`);
-        if (cell && !cell.classList.contains('disabled')) {
-            cell.click();
+    // Tastatur-Unterstützung hinzufügen
+    document.addEventListener('keydown', (event) => {
+        if (event.key >= '1' && event.key <= '9') {
+            const index = parseInt(event.key) - 1;
+            const cell = document.querySelector(`[data-index="${index}"]`);
+            if (cell && !cell.classList.contains('disabled')) {
+                cell.click();
+            }
         }
-    }
-    
-    if (event.key === 'r' || event.key === 'R') {
-        document.getElementById('resetButton').click();
-    }
-});
+        
+        if (event.key === 'r' || event.key === 'R') {
+            document.getElementById('resetButton').click();
+        }
+    });
+}
+
+// Export für Tests / Node-Umgebungen
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { TicTacToe };
+}
