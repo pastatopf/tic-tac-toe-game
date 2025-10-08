@@ -122,7 +122,7 @@ class TicTacToe {
     }
     
     updateDisplay() {
-        this.currentPlayerDisplay.textContent = `Spieler ${this.currentPlayer} ist dran`;
+        this.currentPlayerDisplay.textContent = `Der heiße Spieler ${this.currentPlayer} ist dran`;
     }
     
     updateScoreboard() {
