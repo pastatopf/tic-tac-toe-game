@@ -20,7 +20,10 @@ class TicTacToe {
             [2, 4, 6]
         ];
         
-        this.initializeGame();
+        // Only initialize DOM-related listeners if the document and expected elements exist.
+        if (typeof document !== 'undefined' && document.querySelector && document.querySelector('.cell')) {
+            this.initializeGame();
+        }
     }
     
     initializeGame() {
